@@ -75,6 +75,7 @@ module.exports = async function handler(req, res) {
         sender: { email: env.SENDER_EMAIL, name: env.SENDER_NAME || 'SCUTE' },
         to: [{ email: env.TEAM_EMAIL }],
         subject: `${isNew ? 'New' : 'Updated'} SCUTE registration: ${name}`,
+        htmlContent: alertHtml(isNew, lines),
         textContent: lines.map(([k, v]) => `${k}: ${v || '-'}`).join('\n'),
         tags: ['scute-alert'],
       });
@@ -103,6 +104,17 @@ function brevo(env, path, body) {
 }
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+function alertHtml(isNew, lines) {
+  const rows = lines.map(([k, v]) => `<tr><td style="padding:11px 0;border-bottom:1px solid #2a2b2d;width:130px;font:11px/1.4 Arial,sans-serif;letter-spacing:2px;text-transform:uppercase;color:#8d8f92;">${esc(k)}</td><td style="padding:11px 0;border-bottom:1px solid #2a2b2d;font:15px/1.4 Arial,sans-serif;color:#f1f0ec;">${esc(v || '-')}</td></tr>`).join('');
+  return `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"></head>
+<body style="margin:0;padding:0;background:#050506;"><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#050506;"><tr><td align="center" style="padding:32px 16px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;">
+<tr><td style="padding-bottom:24px;font:700 22px/1 Arial,sans-serif;letter-spacing:7px;color:#f1f0ec;">SCUTE</td></tr>
+<tr><td style="padding-bottom:8px;font:11px/1 Arial,sans-serif;letter-spacing:4px;text-transform:uppercase;color:#8d8f92;">${isNew ? 'New registration' : 'Updated registration'}</td></tr>
+<tr><td><table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border-top:1px solid #2a2b2d;">${rows}</table></td></tr>
+</table></td></tr></table></body></html>`;
+}
 
 function welcomeText(first, site) {
   return `Hi ${first},
