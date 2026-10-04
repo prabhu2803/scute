@@ -38,7 +38,7 @@ module.exports = async function handler(req, res) {
       PHONE: phone,
       COUNTRY: clean(d.country, 60),
       GENDER: clean(d.gender, 30),
-      COLOUR: clean(d.colour, 40),
+      COLOUR: clean(d.colour, 200),
       SIZES: clean(d.sizes, 60),
       DESIGNS: clean(d.designs, 80),
       CONSENT: consent ? 'Yes' : 'No',

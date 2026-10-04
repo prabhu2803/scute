@@ -178,7 +178,7 @@ fieldset.pickset legend{margin-bottom:8px}
 .picks.chips{display:flex;flex-wrap:wrap;gap:10px}
 .tile.chip{grid-auto-flow:column;align-items:center;gap:10px;padding:8px 18px 8px 8px;border-radius:999px}
 .dot{width:24px;height:24px;border-radius:50%;transition:transform .35s cubic-bezier(.3,1.7,.5,1)}
-.dot-w{background:#efeeea}.dot-b{background:#111213;box-shadow:inset 0 0 0 1px rgba(241,240,236,.4)}
+.dot{box-shadow:inset 0 0 0 1px rgba(241,240,236,.3)}
 .picks input:checked+.chip .dot{transform:scale(1.12);animation:ring 2.4s ease-out infinite}
 @keyframes ring{0%{box-shadow:0 0 0 0 rgba(241,240,236,.45)}70%,100%{box-shadow:0 0 0 9px rgba(241,240,236,0)}}
 .check{grid-column:1/-1;display:flex;gap:.7rem;align-items:center;font-size:.86rem;color:var(--ash);cursor:pointer}
@@ -315,8 +315,17 @@ footer{position:relative;z-index:2;text-align:center;padding-block:0 calc(env(sa
         </fieldset>
         <fieldset class="f full pickset rv" style="--i:7"><legend>Colour <span class="opt-t">pick all that apply</span></legend>
           <div class="picks chips">
-            <input type="checkbox" id="colourWhite" name="colour" value="White"><label class="tile chip" for="colourWhite"><span class="dot dot-w" aria-hidden="true"></span><span class="tl">White</span></label>
-            <input type="checkbox" id="colourBlack" name="colour" value="Black"><label class="tile chip" for="colourBlack"><span class="dot dot-b" aria-hidden="true"></span><span class="tl">Black</span></label>
+            <input type="checkbox" id="colourWhite" name="colour" value="White"><label class="tile chip" for="colourWhite"><span class="dot" style="background:#efeeea" aria-hidden="true"></span><span class="tl">White</span></label>
+            <input type="checkbox" id="colourBlack" name="colour" value="Black"><label class="tile chip" for="colourBlack"><span class="dot" style="background:#111213" aria-hidden="true"></span><span class="tl">Black</span></label>
+            <input type="checkbox" id="colourSilverGrey" name="colour" value="Silver Grey"><label class="tile chip" for="colourSilverGrey"><span class="dot" style="background:#b9bcc0" aria-hidden="true"></span><span class="tl">Silver Grey</span></label>
+            <input type="checkbox" id="colourBabyPink" name="colour" value="Baby Pink"><label class="tile chip" for="colourBabyPink"><span class="dot" style="background:#f7b6cf" aria-hidden="true"></span><span class="tl">Baby Pink</span></label>
+            <input type="checkbox" id="colourPink" name="colour" value="Pink"><label class="tile chip" for="colourPink"><span class="dot" style="background:#ff2d8a" aria-hidden="true"></span><span class="tl">Pink</span></label>
+            <input type="checkbox" id="colourPurple" name="colour" value="Purple"><label class="tile chip" for="colourPurple"><span class="dot" style="background:#9b30ff" aria-hidden="true"></span><span class="tl">Purple</span></label>
+            <input type="checkbox" id="colourBlue" name="colour" value="Blue"><label class="tile chip" for="colourBlue"><span class="dot" style="background:#2f6bff" aria-hidden="true"></span><span class="tl">Blue</span></label>
+            <input type="checkbox" id="colourPistaGreen" name="colour" value="Pista Green"><label class="tile chip" for="colourPistaGreen"><span class="dot" style="background:#9be53d" aria-hidden="true"></span><span class="tl">Pista Green</span></label>
+            <input type="checkbox" id="colourYellow" name="colour" value="Yellow"><label class="tile chip" for="colourYellow"><span class="dot" style="background:#f2ff1a" aria-hidden="true"></span><span class="tl">Yellow</span></label>
+            <input type="checkbox" id="colourOrange" name="colour" value="Orange"><label class="tile chip" for="colourOrange"><span class="dot" style="background:#ff7a1a" aria-hidden="true"></span><span class="tl">Orange</span></label>
+            <input type="checkbox" id="colourCamelBrown" name="colour" value="Camel Brown"><label class="tile chip" for="colourCamelBrown"><span class="dot" style="background:#c9955a" aria-hidden="true"></span><span class="tl">Camel Brown</span></label>
           </div>
         </fieldset>
         <fieldset class="f full pickset rv" style="--i:8"><legend>Size / age group <span class="opt-t">pick all that apply</span></legend>
