@@ -164,6 +164,8 @@ fieldset.pickset legend{margin-bottom:8px}
 .tile:hover{border-color:rgba(241,240,236,.45);transform:translateY(-2px);color:var(--bone)}
 .picks input:checked+.tile{border-color:var(--bone);background:rgba(241,240,236,.08);color:var(--bone)}
 .picks input:focus-visible+.tile{outline:2px solid var(--bone);outline-offset:2px}
+.tile.chip.txt{padding:11px 20px}
+.tl.age{font-size:.55rem;letter-spacing:.12em;opacity:.6}
 .tl{font-family:var(--wide);font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;text-align:center}
 .pic{height:36px;display:grid;place-items:end center}
 .pic svg.ic{height:36px;width:auto;transition:transform .3s}
@@ -303,17 +305,25 @@ footer{position:relative;z-index:2;text-align:center;padding-block:0 calc(env(sa
         <div class="f rv" style="--i:4"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="you@email.com"><span class="bar"></span></div>
         <div class="f rv" style="--i:5"><label for="phone">Phone <span class="opt-t">optional</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+91 98765 43210"><span class="bar"></span></div>
         <div class="f rv" style="--i:6"><label for="country">Country</label><input id="country" name="country" autocomplete="country-name" required placeholder="India" list="countries"><span class="bar"></span></div>
+        <fieldset class="f full pickset rv" style="--i:7"><legend>Gender</legend>
+          <div class="picks chips">
+            <input type="radio" id="genderFemale" name="gender" value="Female"><label class="tile chip txt" for="genderFemale"><span class="tl">Female</span></label>
+            <input type="radio" id="genderMale" name="gender" value="Male"><label class="tile chip txt" for="genderMale"><span class="tl">Male</span></label>
+            <input type="radio" id="genderOther" name="gender" value="Other"><label class="tile chip txt" for="genderOther"><span class="tl">Other</span></label>
+            <input type="radio" id="genderNA" name="gender" value="Prefer not to say"><label class="tile chip txt" for="genderNA"><span class="tl">Prefer not to say</span></label>
+          </div>
+        </fieldset>
         <fieldset class="f full pickset rv" style="--i:7"><legend>Colour</legend>
           <div class="picks chips">
             <input type="radio" id="colourWhite" name="colour" value="White"><label class="tile chip" for="colourWhite"><span class="dot dot-w" aria-hidden="true"></span><span class="tl">White</span></label>
             <input type="radio" id="colourBlack" name="colour" value="Black"><label class="tile chip" for="colourBlack"><span class="dot dot-b" aria-hidden="true"></span><span class="tl">Black</span></label>
           </div>
         </fieldset>
-        <fieldset class="f full pickset rv" style="--i:8"><legend>Size <span class="opt-t">pick all that apply</span></legend>
+        <fieldset class="f full pickset rv" style="--i:8"><legend>Size / age group <span class="opt-t">pick all that apply</span></legend>
           <div class="picks three">
-            <input type="checkbox" id="sizeGroupKids" name="sizeGroup" value="Kids"><label class="tile" for="sizeGroupKids"><span class="pic sz" style="--k:.58"><svg class="ic" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M248,167.06V168H32V75.54A8,8,0,0,1,37.27,68L113,40.48a8,8,0,0,1,10,4.27L146.27,99.1a32,32,0,0,0,19.12,17.36l60.73,20.25A32,32,0,0,1,248,167.06Z" opacity="0.2"/><path d="M228.65,129.11l-60.73-20.24a24,24,0,0,1-14.32-13L130.39,41.6s0-.07,0-.1A16,16,0,0,0,110.25,33L34.53,60.49A16.05,16.05,0,0,0,24,75.53V192a16,16,0,0,0,16,16H240a16,16,0,0,0,16-16V167.06A40,40,0,0,0,228.65,129.11ZM40,75.53,115.72,48l7.11,16.63-21.56,7.85A8,8,0,0,0,104,88a7.91,7.91,0,0,0,2.73-.49l22.4-8.14,4.74,11.07-16.6,6A8,8,0,0,0,120,112a7.91,7.91,0,0,0,2.73-.49l17.6-6.4a40.06,40.06,0,0,0,7.68,10l-14.74,5.36A8,8,0,0,0,136,136a8.14,8.14,0,0,0,2.73-.48l28-10.18,56.87,18.95A24,24,0,0,1,238.93,160H40ZM240,192H40V176H240Z"/></svg></span><span class="tl">Kids</span></label>
-            <input type="checkbox" id="sizeGroupTeens" name="sizeGroup" value="Teens"><label class="tile" for="sizeGroupTeens"><span class="pic sz" style="--k:.78"><svg class="ic" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M248,167.06V168H32V75.54A8,8,0,0,1,37.27,68L113,40.48a8,8,0,0,1,10,4.27L146.27,99.1a32,32,0,0,0,19.12,17.36l60.73,20.25A32,32,0,0,1,248,167.06Z" opacity="0.2"/><path d="M228.65,129.11l-60.73-20.24a24,24,0,0,1-14.32-13L130.39,41.6s0-.07,0-.1A16,16,0,0,0,110.25,33L34.53,60.49A16.05,16.05,0,0,0,24,75.53V192a16,16,0,0,0,16,16H240a16,16,0,0,0,16-16V167.06A40,40,0,0,0,228.65,129.11ZM40,75.53,115.72,48l7.11,16.63-21.56,7.85A8,8,0,0,0,104,88a7.91,7.91,0,0,0,2.73-.49l22.4-8.14,4.74,11.07-16.6,6A8,8,0,0,0,120,112a7.91,7.91,0,0,0,2.73-.49l17.6-6.4a40.06,40.06,0,0,0,7.68,10l-14.74,5.36A8,8,0,0,0,136,136a8.14,8.14,0,0,0,2.73-.48l28-10.18,56.87,18.95A24,24,0,0,1,238.93,160H40ZM240,192H40V176H240Z"/></svg></span><span class="tl">Teens</span></label>
-            <input type="checkbox" id="sizeGroupAdult" name="sizeGroup" value="Adult"><label class="tile" for="sizeGroupAdult"><span class="pic sz" style="--k:1"><svg class="ic" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M248,167.06V168H32V75.54A8,8,0,0,1,37.27,68L113,40.48a8,8,0,0,1,10,4.27L146.27,99.1a32,32,0,0,0,19.12,17.36l60.73,20.25A32,32,0,0,1,248,167.06Z" opacity="0.2"/><path d="M228.65,129.11l-60.73-20.24a24,24,0,0,1-14.32-13L130.39,41.6s0-.07,0-.1A16,16,0,0,0,110.25,33L34.53,60.49A16.05,16.05,0,0,0,24,75.53V192a16,16,0,0,0,16,16H240a16,16,0,0,0,16-16V167.06A40,40,0,0,0,228.65,129.11ZM40,75.53,115.72,48l7.11,16.63-21.56,7.85A8,8,0,0,0,104,88a7.91,7.91,0,0,0,2.73-.49l22.4-8.14,4.74,11.07-16.6,6A8,8,0,0,0,120,112a7.91,7.91,0,0,0,2.73-.49l17.6-6.4a40.06,40.06,0,0,0,7.68,10l-14.74,5.36A8,8,0,0,0,136,136a8.14,8.14,0,0,0,2.73-.48l28-10.18,56.87,18.95A24,24,0,0,1,238.93,160H40ZM240,192H40V176H240Z"/></svg></span><span class="tl">Adult</span></label>
+            <input type="checkbox" id="sizeGroupKids" name="sizeGroup" value="Child (0-12)"><label class="tile" for="sizeGroupKids"><span class="pic sz" style="--k:.58"><svg class="ic" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M248,167.06V168H32V75.54A8,8,0,0,1,37.27,68L113,40.48a8,8,0,0,1,10,4.27L146.27,99.1a32,32,0,0,0,19.12,17.36l60.73,20.25A32,32,0,0,1,248,167.06Z" opacity="0.2"/><path d="M228.65,129.11l-60.73-20.24a24,24,0,0,1-14.32-13L130.39,41.6s0-.07,0-.1A16,16,0,0,0,110.25,33L34.53,60.49A16.05,16.05,0,0,0,24,75.53V192a16,16,0,0,0,16,16H240a16,16,0,0,0,16-16V167.06A40,40,0,0,0,228.65,129.11ZM40,75.53,115.72,48l7.11,16.63-21.56,7.85A8,8,0,0,0,104,88a7.91,7.91,0,0,0,2.73-.49l22.4-8.14,4.74,11.07-16.6,6A8,8,0,0,0,120,112a7.91,7.91,0,0,0,2.73-.49l17.6-6.4a40.06,40.06,0,0,0,7.68,10l-14.74,5.36A8,8,0,0,0,136,136a8.14,8.14,0,0,0,2.73-.48l28-10.18,56.87,18.95A24,24,0,0,1,238.93,160H40ZM240,192H40V176H240Z"/></svg></span><span class="tl">Child</span><span class="tl age">0–12 yrs</span></label>
+            <input type="checkbox" id="sizeGroupTeens" name="sizeGroup" value="Teen (13-22)"><label class="tile" for="sizeGroupTeens"><span class="pic sz" style="--k:.78"><svg class="ic" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M248,167.06V168H32V75.54A8,8,0,0,1,37.27,68L113,40.48a8,8,0,0,1,10,4.27L146.27,99.1a32,32,0,0,0,19.12,17.36l60.73,20.25A32,32,0,0,1,248,167.06Z" opacity="0.2"/><path d="M228.65,129.11l-60.73-20.24a24,24,0,0,1-14.32-13L130.39,41.6s0-.07,0-.1A16,16,0,0,0,110.25,33L34.53,60.49A16.05,16.05,0,0,0,24,75.53V192a16,16,0,0,0,16,16H240a16,16,0,0,0,16-16V167.06A40,40,0,0,0,228.65,129.11ZM40,75.53,115.72,48l7.11,16.63-21.56,7.85A8,8,0,0,0,104,88a7.91,7.91,0,0,0,2.73-.49l22.4-8.14,4.74,11.07-16.6,6A8,8,0,0,0,120,112a7.91,7.91,0,0,0,2.73-.49l17.6-6.4a40.06,40.06,0,0,0,7.68,10l-14.74,5.36A8,8,0,0,0,136,136a8.14,8.14,0,0,0,2.73-.48l28-10.18,56.87,18.95A24,24,0,0,1,238.93,160H40ZM240,192H40V176H240Z"/></svg></span><span class="tl">Teen</span><span class="tl age">13–22 yrs</span></label>
+            <input type="checkbox" id="sizeGroupAdult" name="sizeGroup" value="Adult (23+)"><label class="tile" for="sizeGroupAdult"><span class="pic sz" style="--k:1"><svg class="ic" aria-hidden="true" viewBox="0 0 256 256" fill="currentColor"><path d="M248,167.06V168H32V75.54A8,8,0,0,1,37.27,68L113,40.48a8,8,0,0,1,10,4.27L146.27,99.1a32,32,0,0,0,19.12,17.36l60.73,20.25A32,32,0,0,1,248,167.06Z" opacity="0.2"/><path d="M228.65,129.11l-60.73-20.24a24,24,0,0,1-14.32-13L130.39,41.6s0-.07,0-.1A16,16,0,0,0,110.25,33L34.53,60.49A16.05,16.05,0,0,0,24,75.53V192a16,16,0,0,0,16,16H240a16,16,0,0,0,16-16V167.06A40,40,0,0,0,228.65,129.11ZM40,75.53,115.72,48l7.11,16.63-21.56,7.85A8,8,0,0,0,104,88a7.91,7.91,0,0,0,2.73-.49l22.4-8.14,4.74,11.07-16.6,6A8,8,0,0,0,120,112a7.91,7.91,0,0,0,2.73-.49l17.6-6.4a40.06,40.06,0,0,0,7.68,10l-14.74,5.36A8,8,0,0,0,136,136a8.14,8.14,0,0,0,2.73-.48l28-10.18,56.87,18.95A24,24,0,0,1,238.93,160H40ZM240,192H40V176H240Z"/></svg></span><span class="tl">Adult</span><span class="tl age">23+ yrs</span></label>
           </div>
         </fieldset>
         <fieldset class="f full pickset rv" style="--i:9"><legend>Shoe design <span class="opt-t">pick all that apply</span></legend>
@@ -504,8 +514,9 @@ form.addEventListener('submit',async e=>{
   const checks=[['name',v('name').length>1,'Enter your name.'],
                 ['email',emailOk(v('email')),'Enter a full email address, like name@domain.com.'],
                 ['country',v('country').length>1,'Enter your country.'],
+                ['gender',!!v('gender'),'Choose a gender option.'],
                 ['colour',!!v('colour'),'Choose a colour.'],
-                ['sizeGroup',!!v('sizeGroup'),'Choose at least one size: Kids, Teens or Adult.'],
+                ['sizeGroup',!!v('sizeGroup'),'Choose at least one age group: Child, Teen or Adult.'],
                 ['design',!!v('design'),'Choose at least one shoe design.']];
   form.querySelectorAll('[aria-invalid]').forEach(el=>el.removeAttribute('aria-invalid'));
   const bad=checks.find(c=>!c[1]);
@@ -522,7 +533,7 @@ form.addEventListener('submit',async e=>{
     let note='';
     if(REGISTER_ENDPOINT){
       const res=await fetch(REGISTER_ENDPOINT,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({
-        name:v('name'),email:v('email'),phone:v('phone'),country:v('country'),colour:v('colour'),
+        name:v('name'),email:v('email'),phone:v('phone'),country:v('country'),gender:v('gender'),colour:v('colour'),
         sizes:v('sizeGroup'),designs:v('design'),consent:fd.get('consent')?'yes':'no',company:v('company'),source:location.hostname||'website'})});
       const out=await res.json().catch(()=>({}));
       if(!res.ok||!out.ok) throw new Error(out.error||'failed');

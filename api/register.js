@@ -34,6 +34,7 @@ module.exports = async function handler(req, res) {
       FULL_NAME: name,
       PHONE: clean(d.phone, 30),
       COUNTRY: clean(d.country, 60),
+      GENDER: clean(d.gender, 30),
       COLOUR: clean(d.colour, 40),
       SIZES: clean(d.sizes, 60),
       DESIGNS: clean(d.designs, 80),
@@ -69,7 +70,7 @@ module.exports = async function handler(req, res) {
     // 3 · alert the team
     if (env.TEAM_EMAIL) {
       const lines = [['Name', name], ['Email', email], ['Phone', attributes.PHONE], ['Country', attributes.COUNTRY],
-        ['Colour', attributes.COLOUR], ['Sizes', attributes.SIZES], ['Designs', attributes.DESIGNS],
+        ['Gender', attributes.GENDER], ['Colour', attributes.COLOUR], ['Age group', attributes.SIZES], ['Designs', attributes.DESIGNS],
         ['Launch emails', attributes.CONSENT], ['Returning', isNew ? 'No' : 'Yes (details updated)']];
       const r = await brevo(env, '/v3/smtp/email', {
         sender: { email: env.SENDER_EMAIL, name: env.SENDER_NAME || 'SCUTE' },
