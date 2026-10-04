@@ -303,7 +303,7 @@ footer{position:relative;z-index:2;text-align:center;padding-block:0 calc(env(sa
       <form id="signup" novalidate>
         <div class="f rv" style="--i:3"><label for="name">Full name</label><input id="name" name="name" autocomplete="name" required placeholder="Your name"><span class="bar"></span></div>
         <div class="f rv" style="--i:4"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" inputmode="email" required placeholder="you@email.com"><span class="bar"></span></div>
-        <div class="f rv" style="--i:5"><label for="phone">Phone <span class="opt-t">optional</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+91 98765 43210"><span class="bar"></span></div>
+        <div class="f rv" style="--i:5"><label for="phone">Phone <span class="opt-t">with country code</span></label><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required placeholder="+91 98765 43210"><span class="bar"></span></div>
         <div class="f rv" style="--i:6"><label for="country">Country</label><input id="country" name="country" autocomplete="country-name" required placeholder="India" list="countries"><span class="bar"></span></div>
         <fieldset class="f full pickset rv" style="--i:7"><legend>Gender</legend>
           <div class="picks chips">
@@ -503,6 +503,7 @@ $('home').addEventListener('click',e=>{e.preventDefault(); scrollTo({top:0,behav
 
 /* ===== Early access form ===== */
 const form=$('signup'), msg=$('msg'), btn=$('join');
+const phoneOk=v=>/^(\+|00)?[\d\s().-]{6,24}$/.test(v)&&(v.replace(/\D/g,'').replace(/^00/,'').length>=7)&&(v.replace(/\D/g,'').length<=15+(v.startsWith('00')?2:0));
 const emailOk=v=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v);
 // stagger the form in when the section arrives
 new IntersectionObserver((es,o)=>{ es.forEach(e=>{ if(e.isIntersecting){ reg.classList.add('in'); o.disconnect(); } }) },{threshold:.25}).observe(reg);
@@ -513,6 +514,7 @@ form.addEventListener('submit',async e=>{
   const fd=new FormData(form), v=k=>fd.getAll(k).map(x=>String(x).trim()).filter(Boolean).join(', ');
   const checks=[['name',v('name').length>1,'Enter your name.'],
                 ['email',emailOk(v('email')),'Enter a full email address, like name@domain.com.'],
+                ['phone',phoneOk(v('phone')),'Enter a valid phone number, with country code for numbers outside India (e.g. +44 7700 900123).'],
                 ['country',v('country').length>1,'Enter your country.'],
                 ['gender',!!v('gender'),'Choose a gender option.'],
                 ['colour',!!v('colour'),'Choose a colour.'],

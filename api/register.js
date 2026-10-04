@@ -26,13 +26,16 @@ module.exports = async function handler(req, res) {
     const name = clean(d.name, 80);
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) return send(res, 400, { ok: false, error: 'invalid_email' });
     if (name.length < 2) return send(res, 400, { ok: false, error: 'invalid_name' });
+    const phone = clean(d.phone, 30);
+    const digits = phone.replace(/\D/g, '').replace(/^00/, '');
+    if (!/^(\+|00)?[\d\s().-]{6,24}$/.test(phone) || digits.length < 7 || digits.length > 15) return send(res, 400, { ok: false, error: 'invalid_phone' });
     const consent = d.consent === true || d.consent === 'yes';
 
     const attributes = {
       FIRSTNAME: name.split(/\s+/)[0],
       LASTNAME: name.split(/\s+/).slice(1).join(' '),
       FULL_NAME: name,
-      PHONE: clean(d.phone, 30),
+      PHONE: phone,
       COUNTRY: clean(d.country, 60),
       GENDER: clean(d.gender, 30),
       COLOUR: clean(d.colour, 40),
