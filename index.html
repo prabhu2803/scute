@@ -313,10 +313,10 @@ footer{position:relative;z-index:2;text-align:center;padding-block:0 calc(env(sa
             <input type="radio" id="genderNA" name="gender" value="Prefer not to say"><label class="tile chip txt" for="genderNA"><span class="tl">Prefer not to say</span></label>
           </div>
         </fieldset>
-        <fieldset class="f full pickset rv" style="--i:7"><legend>Colour</legend>
+        <fieldset class="f full pickset rv" style="--i:7"><legend>Colour <span class="opt-t">pick all that apply</span></legend>
           <div class="picks chips">
-            <input type="radio" id="colourWhite" name="colour" value="White"><label class="tile chip" for="colourWhite"><span class="dot dot-w" aria-hidden="true"></span><span class="tl">White</span></label>
-            <input type="radio" id="colourBlack" name="colour" value="Black"><label class="tile chip" for="colourBlack"><span class="dot dot-b" aria-hidden="true"></span><span class="tl">Black</span></label>
+            <input type="checkbox" id="colourWhite" name="colour" value="White"><label class="tile chip" for="colourWhite"><span class="dot dot-w" aria-hidden="true"></span><span class="tl">White</span></label>
+            <input type="checkbox" id="colourBlack" name="colour" value="Black"><label class="tile chip" for="colourBlack"><span class="dot dot-b" aria-hidden="true"></span><span class="tl">Black</span></label>
           </div>
         </fieldset>
         <fieldset class="f full pickset rv" style="--i:8"><legend>Size / age group <span class="opt-t">pick all that apply</span></legend>
@@ -517,7 +517,7 @@ form.addEventListener('submit',async e=>{
                 ['phone',phoneOk(v('phone')),'Enter a valid phone number, with country code for numbers outside India (e.g. +44 7700 900123).'],
                 ['country',v('country').length>1,'Enter your country.'],
                 ['gender',!!v('gender'),'Choose a gender option.'],
-                ['colour',!!v('colour'),'Choose a colour.'],
+                ['colour',!!v('colour'),'Choose at least one colour.'],
                 ['sizeGroup',!!v('sizeGroup'),'Choose at least one age group: Child, Teen or Adult.'],
                 ['design',!!v('design'),'Choose at least one shoe design.']];
   form.querySelectorAll('[aria-invalid]').forEach(el=>el.removeAttribute('aria-invalid'));
